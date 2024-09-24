@@ -1,18 +1,18 @@
-import React, { useCallback, useMemo } from "react";
+import React, {useCallback, useMemo} from "react";
 import * as Popover from "@radix-ui/react-popover";
 
-import { FontPickerList } from "./FontPickerList";
-import { FontPickerTrigger } from "./FontPickerTrigger";
-import { ButtonIconSelect } from "../ButtonIconSelect";
+import {FontPickerList} from "./FontPickerList";
+import {FontPickerTrigger} from "./FontPickerTrigger";
+import {ButtonIconSelect} from "../ButtonIconSelect";
 import {
   FontFamilyCodeIcon,
   FontFamilyNormalIcon,
   FreedrawIcon,
 } from "../icons";
-import { ButtonSeparator } from "../ButtonSeparator";
-import type { FontFamilyValues } from "../../element/types";
-import { FONT_FAMILY } from "../../constants";
-import { t } from "../../i18n";
+import {ButtonSeparator} from "../ButtonSeparator";
+import type {FontFamilyValues} from "../../element/types";
+import {FONT_FAMILY} from "../../constants";
+import {t} from "../../i18n";
 
 import "./FontPicker.scss";
 
@@ -24,11 +24,17 @@ export const DEFAULT_FONTS = [
     testId: "font-family-handrawn",
   },
   {
-    value: FONT_FAMILY.Nunito,
+    value: FONT_FAMILY.Yutong,
     icon: FontFamilyNormalIcon,
     text: t("labels.normal"),
-    testId: "font-family-normal",
+    testId: "font-family-yutong",
   },
+// {
+//   value: FONT_FAMILY.Nunito,
+//   icon: FontFamilyNormalIcon,
+//   text: t("labels.normal"),
+//   testId: "font-family-normal",
+// },
   {
     value: FONT_FAMILY["Comic Shanns"],
     icon: FontFamilyCodeIcon,
@@ -59,14 +65,14 @@ interface FontPickerProps {
 
 export const FontPicker = React.memo(
   ({
-    isOpened,
-    selectedFontFamily,
-    hoveredFontFamily,
-    onSelect,
-    onHover,
-    onLeave,
-    onPopupChange,
-  }: FontPickerProps) => {
+     isOpened,
+     selectedFontFamily,
+     hoveredFontFamily,
+     onSelect,
+     onHover,
+     onLeave,
+     onPopupChange,
+   }: FontPickerProps) => {
     const defaultFonts = useMemo(() => DEFAULT_FONTS, []);
     const onSelectCallback = useCallback(
       (value: number | false) => {
@@ -85,9 +91,9 @@ export const FontPicker = React.memo(
           value={selectedFontFamily}
           onClick={onSelectCallback}
         />
-        <ButtonSeparator />
+        <ButtonSeparator/>
         <Popover.Root open={isOpened} onOpenChange={onPopupChange}>
-          <FontPickerTrigger selectedFontFamily={selectedFontFamily} />
+          <FontPickerTrigger selectedFontFamily={selectedFontFamily}/>
           {isOpened && (
             <FontPickerList
               selectedFontFamily={selectedFontFamily}
